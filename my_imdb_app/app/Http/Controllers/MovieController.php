@@ -36,8 +36,6 @@ class MovieController extends Controller
                 }
 
                 $movie_details_and_credits = Http::withToken($token)->get('https://api.themoviedb.org/3/movie/' . $movie['id'] . '?append_to_response=credits')->json();
-
-                dd($movie_details_and_credits);
                 $movie_crew = $movie_details_and_credits['credits']['crew'];
                 $movie["directors"] = [];
                 $director_names = [];
