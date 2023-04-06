@@ -21,7 +21,7 @@ return new class extends Migration
 
             // Foreign key definition
             $table->unsignedBigInteger("genre_id");
-            $table->foreign("genre_id")->references('id')->on('genres');
+            $table->foreign("genre_id")->references('genre_tmdb_id')->on('genres');
         });
     }
 

@@ -36,6 +36,8 @@ class MovieController extends Controller
                 }
 
                 $movie_details_and_credits = Http::withToken($token)->get('https://api.themoviedb.org/3/movie/' . $movie['id'] . '?append_to_response=credits')->json();
+
+                dd($movie_details_and_credits);
                 $movie_crew = $movie_details_and_credits['credits']['crew'];
                 $movie["directors"] = [];
                 $director_names = [];
@@ -44,17 +46,19 @@ class MovieController extends Controller
                     if($member['known_for_department'] === 'Directing'){
                         $director_id = $member['id'];
                         $director_name = $member['name'];
-                        /*$director_details = Http::withToken($token)->get('https://api.themoviedb.org/3/person/' . $director_id)->json();
-                        $director_biography = $director_details['biography'];
-                        $director_birthday = $director_details['birthday'];
-                        */
-
                         if(!in_array($director_name, $director_names)){
+                            // The execution time is incredibly extended if we want to fetch the directors' details
+                            $director_details = Http::withToken($token)->get('https://api.themoviedb.org/3/person/' . $director_id)->json();
+                            $director_biography = $director_details['biography'];
+                            $director_birthday = $director_details['birthday'];
+
+
+
                             $movie["directors"] []= [
                                 "id" => $director_id,
                                 "name" => $director_name,
-                                //"biography" => $director_biography,
-                                //"birthday" => $director_birthday
+                                "biography" => $director_biography,
+                                "birthday" => $director_birthday
                             ];
                             $director_names []= $director_name;
                         }

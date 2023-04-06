@@ -28,7 +28,10 @@ class Kernel extends ConsoleKernel
             DB::table('movies')->delete();
         })->daily();
 
-
+        /**
+         * Here will be the daily updates of the tables based on the tmdb api
+         *
+        */
     }
 
     /**

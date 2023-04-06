@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string("genre_name"); // Could be an enum
+            $table->bigInteger("genre_tmdb_id");
         });
     }
 

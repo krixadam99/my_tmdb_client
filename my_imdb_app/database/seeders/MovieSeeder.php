@@ -7,6 +7,7 @@ use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Http;
 
 class MovieSeeder extends Seeder
 {
@@ -15,6 +16,10 @@ class MovieSeeder extends Seeder
      */
     public function run(): void
     {
+
+        // Furhter addition of initial movies and directors table
+        // Each should fetch information from the TMDB API
+
         $directors = Director::all();
         $genres = Genre::all();
 

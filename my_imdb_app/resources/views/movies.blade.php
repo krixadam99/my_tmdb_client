@@ -64,7 +64,6 @@
                         </td>
                         <td>
                             <div>
-                                
                             </div>
                         </td>
                         <td>
@@ -79,10 +78,10 @@
                                                 <div>{{ $director['id'] }}</div>
                                             </td>
                                             <td>
-                                                <div class="elliptical_text"></div>
+                                                <div class="elliptical_text">{{ $director['biography'] }}</div>
                                             </td>
                                             <td>
-                                                <div></div>
+                                                <div>{{ $director['birthday'] }}</div>
                                             </td>
                                         </tr>
                                     @endforeach
